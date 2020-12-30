@@ -28,7 +28,7 @@ manager.route(LogManager.class.getPackage())
   
 // route everything else
 manager.routeUnmatched()
-  .at(LogLevel.INFO)
+  .at(LogLevel.ERROR)
   .with(e -> e.label("elog4j", "unmatched"));
   .to(ConsoleSink.getDefaultInstance());
 ```
