@@ -11,7 +11,7 @@ Logger log = LogManager.getLogger(getClass());
 log.debug("Test message", e -> e.label("type", "user").put("age", 46).put("name", "Fungrim"));
 ```
 
-## TLDR; Redux
+## TLDR; Config
 
 ```
 // create manager and set as static - "global"
