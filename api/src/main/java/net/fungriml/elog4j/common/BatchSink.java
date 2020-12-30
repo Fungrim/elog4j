@@ -6,6 +6,7 @@ import java.util.List;
 import lombok.RequiredArgsConstructor;
 import net.fungriml.elog4j.api.LogEvent;
 import net.fungriml.elog4j.api.Sink;
+import net.fungriml.elog4j.util.Arguments;
 
 @RequiredArgsConstructor
 public class BatchSink implements Sink {

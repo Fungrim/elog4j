@@ -1,4 +1,4 @@
-package net.fungriml.elog4j.common;
+package net.fungriml.elog4j.util;
 
 import java.util.function.Predicate;
 

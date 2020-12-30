@@ -6,8 +6,9 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import net.fungriml.elog4j.common.Arguments;
 import net.fungriml.elog4j.common.ConsoleSink;
+import net.fungriml.elog4j.util.Arguments;
+import net.fungriml.elog4j.util.RegexpUtil;
 
 @Getter
 @RequiredArgsConstructor(access = AccessLevel.PACKAGE)

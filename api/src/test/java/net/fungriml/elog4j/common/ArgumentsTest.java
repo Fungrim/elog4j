@@ -1,5 +1,7 @@
 package net.fungriml.elog4j.common;
 
+import net.fungriml.elog4j.util.Arguments;
+
 import org.junit.Test;
 
 public class ArgumentsTest {

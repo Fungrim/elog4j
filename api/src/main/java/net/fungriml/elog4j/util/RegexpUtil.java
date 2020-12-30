@@ -1,4 +1,4 @@
-package net.fungriml.elog4j.api;
+package net.fungriml.elog4j.util;
 
 import java.util.regex.Pattern;
 

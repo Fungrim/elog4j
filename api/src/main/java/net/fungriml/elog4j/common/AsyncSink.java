@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.NonNull;
 import net.fungriml.elog4j.api.LogEvent;
 import net.fungriml.elog4j.api.Sink;
+import net.fungriml.elog4j.util.Arguments;
 
 @AllArgsConstructor
 public class AsyncSink implements Sink {

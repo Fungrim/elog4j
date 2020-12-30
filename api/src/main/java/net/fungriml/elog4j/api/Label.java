@@ -6,7 +6,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.ToString;
-import net.fungriml.elog4j.common.Arguments;
+import net.fungriml.elog4j.util.Arguments;
 
 @Getter
 @ToString

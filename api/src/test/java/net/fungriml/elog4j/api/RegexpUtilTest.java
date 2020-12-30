@@ -3,6 +3,7 @@ package net.fungriml.elog4j.api;
 import java.util.regex.Pattern;
 
 import net.fungriml.elog4j.api.test.TestClass;
+import net.fungriml.elog4j.util.RegexpUtil;
 
 import org.junit.Assert;
 import org.junit.Test;

@@ -35,7 +35,7 @@ public class Category implements Sink {
             return this;
         }
 
-        public Builder extractSiteInformation(boolean doExtract) {
+        public Builder extractSource() {
             return this;
         }
 

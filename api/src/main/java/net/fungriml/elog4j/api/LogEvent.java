@@ -11,7 +11,7 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 import net.fungriml.elog4j.api.Payload.Node;
-import net.fungriml.elog4j.common.Arguments;
+import net.fungriml.elog4j.util.Arguments;
 
 @Getter
 @ToString
@@ -48,6 +48,8 @@ public class LogEvent {
         private Payload payload = new Payload();
         private Map<String, String> labels = new HashMap<String, String>();
         private Throwable cause;
+        private ThreadSource threadSource;
+        private CodeSource codeSource;
 
         Builder(Instant time, LogLevel level) {
             this.time = time;
@@ -59,6 +61,8 @@ public class LogEvent {
             e.summary = summary;
             e.cause = cause;
             e.payload = payload;
+            e.site = codeSource;
+            e.thread = threadSource;
             if (labels.size() > 0) {
                 e.labels = labels;
             }
@@ -123,6 +127,20 @@ public class LogEvent {
             this.cause = e;
             return this;
         }
+
+        public Builder thread(Thread th) {
+            if (th != null) {
+                this.threadSource = new ThreadSource(th);
+            }
+            return this;
+        }
+
+        public Builder source(StackTraceElement el) {
+            if (el != null) {
+                this.codeSource = new CodeSource(el);
+            }
+            return this;
+        }
     }
 
     static Builder builder(Instant time, LogLevel level) {
@@ -139,6 +157,8 @@ public class LogEvent {
     private Map<String, String> labels;
     private Payload payload;
     private Throwable cause;
+    private CodeSource site;
+    private ThreadSource thread;
 
     public Map<String, String> getLabels() {
         return labels == null ? Collections.emptyMap() : new HashMap<>(labels);
