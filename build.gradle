@@ -1,0 +1,56 @@
+buildscript {
+    repositories {
+    	jcenter()
+    }
+    dependencies {
+        classpath "com.diffplug.spotless:spotless-plugin-gradle:3.28.0"
+        classpath "org.owasp:dependency-check-gradle:6.0.3"
+    }
+}
+
+subprojects {
+
+    apply plugin: 'java'
+    apply plugin: 'eclipse'
+    apply plugin: 'maven'
+    apply plugin: 'maven-publish'
+	apply plugin: 'com.diffplug.gradle.spotless'
+	apply plugin: 'org.owasp.dependencycheck'
+
+    targetCompatibility = 11
+    sourceCompatibility = 11
+    
+   	ext {
+        mockitoVersion = '2.21.0'
+        junitVersion = '4.12'
+        lombokVersion = '1.18.2'
+    }
+    
+    eclipse {
+    	classpath {
+        	downloadSources = true
+    	}
+	}
+    
+    repositories {
+	    jcenter()
+	}
+	
+	dependencies {
+	    compileOnly("org.projectlombok:lombok:${lombokVersion}")
+    	testCompileOnly("org.projectlombok:lombok:${lombokVersion}")
+    	annotationProcessor("org.projectlombok:lombok:${lombokVersion}")
+		testAnnotationProcessor("org.projectlombok:lombok:${lombokVersion}")
+	    testImplementation "org.mockito:mockito-core:${mockitoVersion}"
+	    testImplementation "junit:junit:${junitVersion}"
+	}
+	
+	spotless {
+	  	enforceCheck = true
+	  	java {
+	    	importOrderFile '../elog4j.importorder'             
+	    	eclipse().configFile '../elog4j-format.xml'   
+	    	removeUnusedImports() 
+	  	}
+	}
+}
