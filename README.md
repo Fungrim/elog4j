@@ -64,7 +64,7 @@ manager.route(MyClass.class.getPackage())
 
 ## TLDR; Tracing
 
-The `LogEvent` contains first class properties for `traceId` and `spanId`. These are strings types, but are expected to be valid strings according to OpenTracing and OpenTelemetry (ie. base16 encoded values). You easily can set these using decorators for a category, so for example:
+The `LogEvent` contains first class properties for `traceId` and `spanId`. These are strings types, but are expected to be valid strings according to OpenTracing and OpenTelemetry (ie. base16 encoded values). You can set these using decorators for a category, so for example:
 
 ```java
 manager.route(MyClass.class.getPackage())
