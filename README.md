@@ -6,7 +6,7 @@ can easily format a structured message as text, parse a text line as a structure
 
 ## TLDR;
 
-```
+```java
 Logger log = LogManager.getLogger(getClass());
 log.debug("Test message", e -> e.label("type", "user")
   .prop("age", 46)
@@ -21,7 +21,7 @@ log.debug("Test message", e -> e.label("type", "user")
 
 ## TLDR; Config
 
-```
+```java
 // create manager
 LogManager manager = LogManager.builder(ClockService.systemUtc())
   .global() // set as the static "global" manager
@@ -51,7 +51,7 @@ manager.routeUnmatched()
 
 ## TLDR; Batches and Threads
 
-```
+```java
 // new thread, the batch
 Sink target = ConsoleSink.getDefaultInstance(); // end target
 Sink batchSink = BatchSink.wrap(target, 256); // batches of 256
