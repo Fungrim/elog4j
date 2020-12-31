@@ -61,3 +61,31 @@ manager.route(MyClass.class.getPackage())
   .at(LogLevel.INFO) // category threshold
   .to(asyncSink); 
 ```
+
+## TLDR; Tracing
+
+The `LogEvent` contains first class properties for `traceId` and `spanId`. These are strings types, but are expected to be valid strings according to OpenTracing and OpenTelemetry (ie. base16 encoded values). You easily can set these using decorators for a category, so for example:
+
+```java
+manager.route(MyClass.class.getPackage())
+  .at(LogLevel.INFO) // category threshold
+  .with(e -> {
+      SpanContext s = Span.current().getSpanContext();
+      e.trace(s.getTraceIdAsHexString(), s.getSpanIdAsHexString()); // span id may be null
+  })
+  .to(sink); 
+```
+
+## TLDR; MDC and NDC
+
+Currently there is no mapped or nested diagnistics context. You should be using OpenTelemetry for this (see above), however, if you have thread locals, stacked or otherwise, it is safe to use in a category as no thread hand-off is done prior to filtering:
+
+```java
+```java
+manager.route(MyClass.class.getPackage())
+  .at(LogLevel.INFO) // category threshold
+  .with(e -> {
+      Map<String, String> mdc = // get thread local values
+      m.forEach((k, v) -> e.prop(k, v));
+  })
+  .to(sink);
