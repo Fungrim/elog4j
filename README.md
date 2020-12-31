@@ -81,7 +81,6 @@ manager.route(MyClass.class.getPackage())
 Currently there is no mapped or nested diagnistics context. You should be using OpenTelemetry for this (see above), however, if you have thread locals, stacked or otherwise, it is safe to use in a category as no thread hand-off is done prior to filtering:
 
 ```java
-```java
 manager.route(MyClass.class.getPackage())
   .at(LogLevel.INFO) // category threshold
   .with(e -> {
@@ -89,3 +88,4 @@ manager.route(MyClass.class.getPackage())
       m.forEach((k, v) -> e.prop(k, v));
   })
   .to(sink);
+```
